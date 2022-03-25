@@ -4,9 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { Accueil } from './composants/Accueil';
+import { BonCde } from './composants/BonCde';
+import { Panier } from './composants/Panier';
+import { BrowserRouter , Routes, Route } from "react-router-dom"
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+            <Route index element={<Accueil />}  />
+            <Route path="panier" element={<Panier />} />
+            <Route path="boncde" element={<BonCde />} />
+            <Route path="*" element={<><h1>Erreur 404</h1></>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
